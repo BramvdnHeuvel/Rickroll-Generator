@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rickroll Generator</title>
+    <meta name="description" content="Create your own fake rich previews using the Rickroll generator." />
+</head>
+<body style="margin: 0;">
+    <img src="/static/rick.gif" style="width: 100%;max-height: 50vh;">
+    <div style="text-align: center;">
+        <h2>MAKE YOUR OWN RICKROLLS</h2>
+        <form method="POST" action="{{ url_for('create_roll') }}"
+            style="display: flex;justify-content: center;flex-flow: column;align-items: center;"
+        >
+            <input 
+                type="text" name="title"
+                placeholder="Title (max. 65 characters) REQUIRED" 
+                maxlength="65" 
+                style="width: 80%;margin-bottom: 10px;max-width: 40em;"
+                required
+                >
+            <textarea 
+                type="text" name="description"
+                placeholder="Description (max 155 characters)" 
+                maxlength="155" 
+                style="width: 70%;height: 5em;margin-bottom: 10px;max-width: 35em;"
+                ></textarea>
+            <input 
+                type="url" name="image"
+                placeholder="Image url" 
+                maxlength="256" 
+                style="width: 50%;margin-bottom: 10px;max-width: 25em;"
+                >
+            <input type="submit">
+        </form>
+    </div>
+    <p style="position: absolute;bottom: 0;">
+        This website was made by <a href="http://noordstar.me/">Noordstar</a>.
+    </p>
+</body>
+</html>

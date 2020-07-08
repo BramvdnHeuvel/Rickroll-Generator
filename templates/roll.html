@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ title }}</title>
+    <meta property="og:title" content="{{ title }}">
+
+    {% if description != None %}
+    <meta name="description" content="{{ description }}">
+    <meta property="og:description" content="{{ description }}">
+    {% endif %}
+    {% if image != None %}
+    <meta property="og:image" content="{{ image }}" />
+    {% endif %}
+    
+    <meta http-equiv="refresh" content="0; url = https://youtu.be/dQw4w9WgXcQ" />
+</head>
+
+<body>
+    <p>Redirecting you to the right page...</p>
+
+    <small style="position: absolute;bottom: 30px;">
+        If you're still not redirected after a short while,
+        <a href="https://youtu.be/dQw4w9WgXcQ">
+            click here
+        </a> for the link, and 
+        <a href="{{ url_for('index') }}">
+            here
+        </a> to see how you got here.
+    </small>
+</body>
+
+</html>
