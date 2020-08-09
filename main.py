@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, abort
 import src.database as db
 import src.parser as parse
 import sys
@@ -15,6 +15,9 @@ def index():
 
 @app.route('/<string:link>')
 def get_rickrolled(link):
+    if link == 'favicon.ico':
+        abort(404)
+        
     shortcut = db.find_link(link)
 
     if shortcut is None:
