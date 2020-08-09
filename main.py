@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, send_from_directory, request
 import src.database as db
 import src.parser as parse
 import sys
@@ -71,6 +71,10 @@ def create_roll():
         title = parse.title(info['title'], code)
 
         return render_template('new-rolls.html', code=code, title=title, domain=DOMAIN_NAME)
+
+@app.route('/robots.txt')
+def robots():
+    return send_from_directory(app.static_folder, request.path[1:])
 
 if __name__ == '__main__':
     if len(sys.argv) == 1:
