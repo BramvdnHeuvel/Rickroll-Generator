@@ -41,9 +41,20 @@ def notice_rickrolled_victim(link):
 
     return redirect("https://youtu.be/dQw4w9WgXcQ")
 
+@app.route('/data/<string:link>')
+def view_rickroll_success(link):
+    """
+        Get a page that shows how many people fell for your rickroll.
+    """
+    shortcut = db.find_link(link)
 
-            description=shortcut[3], 
-            image=shortcut[4]
+    if shortcut is None:
+        return redirect(url_for('index'))
+    else:
+        return render_template('success.html', 
+            amount=shortcut[1],
+            link=link,
+            domain=DOMAIN_NAME
         )
 
 @app.route('/create', methods=['POST'])

@@ -10,6 +10,9 @@
     <p>{{ domain }}{{ url_for('get_rickrolled', link=title) }}</p>
     <h1>Here's a shorter version of the link:</h1>
     <p>{{ domain }}{{ url_for('get_rickrolled', link=code) }}</p>
+    <br>
+    <h1>View here how many people you've rickrolled:</h1>
+    <p>{{ domain }}/data{{ url_for('get_rickrolled', link=code) }}</p>
     <h1>Have fun!</h1>
     <p>
         <a href="{{ url_for('index') }}">Go back to main page.</a>
