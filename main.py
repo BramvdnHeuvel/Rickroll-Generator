@@ -18,6 +18,9 @@ def get_rickrolled(link):
     """
         Gain the page that shows the fake rich preview.
     """
+    if link == 'favicon.ico':
+        abort(404)
+        
     shortcut = db.find_link(link)
 
     if shortcut is None:

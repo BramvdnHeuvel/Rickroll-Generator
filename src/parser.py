@@ -35,5 +35,5 @@ def new_link():
     return {
         'title'         : f['title'][:65],
         'description'   : None if 'description' not in f or f['description'] == '' else f['description'][:155],
-        'image'         : None if 'image' not in f or f['image'] == '' else f['image'][:256]
+        'image'         : None if 'image' not in f or f['image'] == '' else f['image'][:1024]
     }
