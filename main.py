@@ -15,16 +15,33 @@ def index():
 
 @app.route('/<string:link>')
 def get_rickrolled(link):
+    """
+        Gain the page that shows the fake rich preview.
+    """
     shortcut = db.find_link(link)
 
     if shortcut is None:
         return redirect(url_for('index'))
     else:
-        # GET RICKROLLED
-        db.visit_link(link)
-
         return render_template('roll.html', 
             title=shortcut[2], 
+            description=shortcut[3], 
+            image=shortcut[4],
+            link=link,
+            domain=DOMAIN_NAME
+        )
+
+@app.route('/source/<string:link>')
+def notice_rickrolled_victim(link):
+    """
+        Get redirected to the Rickroll - but add the score real quick.
+    """
+    # GET RICKROLLED
+    db.visit_link(link)
+
+    return redirect("https://youtu.be/dQw4w9WgXcQ")
+
+
             description=shortcut[3], 
             image=shortcut[4]
         )
