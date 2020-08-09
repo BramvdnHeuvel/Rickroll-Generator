@@ -4,7 +4,7 @@ import src.parser as parse
 import sys
 
 app = Flask(__name__)
-DOMAIN_NAME = 'http:/rr.noordstar.me' # Change this to where people can access your rickroll website.
+DOMAIN_NAME = 'https://rr.noordstar.me' # Change this to where people can access your rickroll website.
 
 @app.route('/')
 def index():
