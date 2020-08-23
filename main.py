@@ -5,13 +5,14 @@ import sys
 
 app = Flask(__name__)
 DOMAIN_NAME = 'https://rr.noordstar.me' # Change this to where people can access your rickroll website.
+ALLOW_ADS = False    # Only change this to True if you want ads on your website - so pretty much never.
 
 @app.route('/')
 def index():
     """
         Main homepage. Here, users are allowed to create their own rickroll links!
     """
-    return render_template('index.html')
+    return render_template('index.html', allow_ads=ALLOW_ADS)
 
 @app.route('/<string:link>')
 def get_rickrolled(link):
