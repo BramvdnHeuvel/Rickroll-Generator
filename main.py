@@ -1,4 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, send_from_directory, request, abort
+from multiprocessing import Value
 import src.database as db
 import src.parser as parse
 import sys
@@ -6,6 +7,7 @@ import sys
 app = Flask(__name__)
 DOMAIN_NAME = 'https://rr.noordstar.me' # Change this to where people can access your rickroll website.
 ALLOW_ADS = False    # Only change this to True if you want ads on your website - so pretty much never.
+counter = Value('i', db.count_rickrolls())
 
 @app.route('/')
 def index():
@@ -42,6 +44,11 @@ def notice_rickrolled_victim(link):
     """
     # GET RICKROLLED
     db.visit_link(link)
+    counter.value += 1
+    amount = counter.value
+
+    if amount % 25 == 0:
+        print(f"Rickrolled {amount} people!")
 
     return redirect("https://youtu.be/dQw4w9WgXcQ")
 

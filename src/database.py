@@ -67,3 +67,24 @@ def run(query, args=None):
             yield q
         conn.close()
     return output
+
+
+def count_rickrolls() -> int:
+    """
+        Calculate how many times someone has been rickrolled by the website.
+    """
+    try:
+        for answer in run("SELECT SUM(visits) FROM links;")():
+            if answer[0] is None:
+                raise ValueError(
+                    "No rickrolls detected. Database is either new or corrupted."
+                )
+            return answer[0]
+        else:
+            return 0
+    except sqlite3.OperationalError as e:
+        print(e)
+        return 0
+    except Exception as e:
+        print(e)
+        return 0
