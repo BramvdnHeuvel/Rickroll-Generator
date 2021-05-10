@@ -1,6 +1,6 @@
 # Rickroll Generator
 
-This is the Rickroll Generator, a website that allows people to creat new Rickroll links for people to fall for! The link includes a rich preview to deceive your victims even more!
+This is the [Rickroll Generator](https://rr.noordstar.me/), a website that allows people to creat new Rickroll links for people to fall for! The link includes a rich preview to deceive your victims even more!
 
 [What is a rickroll?](https://en.wikipedia.org/wiki/Rickrolling)
 
