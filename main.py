@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, send_from_directory, request, abort
+from flask import Flask, render_template, redirect, url_for, send_from_directory, request, abort, jsonify
 from multiprocessing import Value
 import src.database as db
 import src.parser as parse
@@ -15,6 +15,15 @@ def index():
         Main homepage. Here, users are allowed to create their own rickroll links!
     """
     return render_template('index.html', allow_ads=ALLOW_ADS)
+
+@app.route('/total')
+def total():
+    """
+        Get the total of how many people have been rickrolled
+    """
+    return jsonify({
+        'total': counter.value
+    })
 
 @app.route('/<string:link>')
 def get_rickrolled(link):
