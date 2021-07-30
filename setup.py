@@ -1,14 +1,18 @@
 import sqlite3
+import sys
 
 # ---------------------------------------
 # Safety lock: make sure they know what they're doing.
+# Override by giving -y as an argument.
 
-safety = ''
-while safety.lower() != 'y':
-    safety = input("WARNING: This will erase the current database! \nDo you want to proceed? [Y/n] ")
+if '-y' not in sys.argv:
+    safety = ''
+    
+    while safety.lower() != 'y':
+        safety = input("WARNING: This will erase the current database! \nDo you want to proceed? [Y/n] ")
 
-    if safety.lower() == 'n':
-        exit()
+        if safety.lower() == 'n':
+            exit()
 
 
 # ---------------------------------------
