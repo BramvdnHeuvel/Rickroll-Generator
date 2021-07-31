@@ -87,6 +87,7 @@ def create_roll():
     except Exception:
         return redirect(url_for('index'))
     else:
+        print("Created new rickroll: " + info['title'])
         code = db.add_link(**info)
         title = parse.title(info['title'], code)
 
