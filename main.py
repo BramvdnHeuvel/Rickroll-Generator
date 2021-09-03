@@ -31,7 +31,7 @@ def total():
 
     # Do a recount to get the actual (higher) value
     # Don't do it too often, though
-    if abs(last_updated_count - now) > 10 and random.randint(1, 4) == 1:
+    if abs(last_updated_count.value - now) > 10 and random.randint(1, 4) == 1:
         last_updated_count.value = now
         counter.value            = db.count_rickrolls()
     
