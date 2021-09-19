@@ -9,7 +9,7 @@ import src.database as db
 import src.parser as parse
 
 app = Flask(__name__)
-DOMAIN_NAME = 'https://rr.noordstar.me' # Change this to where people can access your rickroll website.
+DOMAIN_NAME = 'https://youtu.be/' # Change this to where people can access your rickroll website.
 ALLOW_ADS = False    # Only change this to True if you want ads on your website - so pretty much never.
 
 counter = Value('i', db.count_rickrolls())
