@@ -13,6 +13,12 @@
     <meta property="og:title" content="{{ title }}">
     <meta property="twitter:title" content="{{ title }}">
 
+    {% if website_name != None %}
+        <meta property="og:site_name" content="{{ website_name }}"/>
+    {% else %}
+        <meta property="og:site_name" content="Noordstar News"/>
+    {% endif %}
+
     {% if description != None %}
     <meta name="description" content="{{ description }}" />
     <meta property="og:description" content="{{ description }}" />
@@ -23,6 +29,7 @@
     <meta property="twitter:image" content="{{ image }}" />
     {% endif %}
     
+    <meta property="og:url" content="{{ domain }}/{{ link }}"/>
     <meta http-equiv="refresh" content="0; url = {{ domain }}/source/{{ link }}" />
 </head>
 
