@@ -1,13 +1,21 @@
-from flask import Flask, render_template, redirect, url_for, send_from_directory, request, abort, jsonify
 from multiprocessing import Value
-import src.database as db
-import src.parser as parse
+import random
+import time
 import sys
 
+from flask import Flask, render_template, redirect, url_for, send_from_directory, request, abort, jsonify
+from flask_cors import CORS, cross_origin
+
+import src.database as db
+import src.parser as parse
+
 app = Flask(__name__)
+CORS(app)
 DOMAIN_NAME = 'https://rr.noordstar.me' # Change this to where people can access your rickroll website.
 ALLOW_ADS = False    # Only change this to True if you want ads on your website - so pretty much never.
+
 counter = Value('i', db.count_rickrolls())
+last_updated_count = Value('i', int(time.time()))
 
 @app.route('/')
 def index():
@@ -17,10 +25,19 @@ def index():
     return render_template('index.html', allow_ads=ALLOW_ADS)
 
 @app.route('/total')
+@cross_origin()
 def total():
     """
         Get the total of how many people have been rickrolled
     """
+    now = int(time.time())
+
+    # Do a recount to get the actual (higher) value
+    # Don't do it too often, though
+    if abs(last_updated_count.value - now) > 10 and random.randint(1, 4) == 1:
+        last_updated_count.value = now
+        counter.value            = db.count_rickrolls()
+    
     return jsonify({
         'total': counter.value
     })
