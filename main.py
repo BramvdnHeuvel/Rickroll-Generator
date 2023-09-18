@@ -76,7 +76,7 @@ def notice_rickrolled_victim(link):
     if amount % 25 == 0:
         print(f"Rickrolled {amount} people!")
 
-    return redirect("https://youtu.be/dQw4w9WgXcQ")
+    return redirect("https://www.youtube.com/watch?v=xvFZjo5PgG0")
 
 @app.route('/data/<string:link>')
 def view_rickroll_success(link):
